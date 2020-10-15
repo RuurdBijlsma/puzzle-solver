@@ -1,0 +1,28 @@
+{
+  "name": "puzzle-solver",
+  "version": "0.1.1",
+  "description": "Set of functions for solving puzzles, mainly focuses on sudoku's but other types of puzzles should work too. Can also check if a puzzle meets all constraints and check if a puzzle has a unique solution.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --es-module-specifier-resolution=node src/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruurdbijlsma/sudoku-solver.git"
+  },
+  "keywords": [
+    "sudoku",
+    "csp",
+    "solver"
+  ],
+  "author": "Ruurd Bijlsma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruurdbijlsma/sudoku-solver/issues"
+  },
+  "homepage": "https://github.com/ruurdbijlsma/sudoku-solver#readme",
+  "dependencies": {
+    "csp-solver": "github:ruurdbijlsma/csp-solver"
+  }
+}
