@@ -38,4 +38,4 @@ const hasUniqueSolution = (puzzle) => {
     return {unique, result};
 }
 
-export {getCSP, solve, hasUniqueSolution};
+export {getCSP, solve, hasUniqueSolution, getConstraints};
