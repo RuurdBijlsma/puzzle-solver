@@ -1,7 +1,7 @@
 {
     "name": "my sudoku puzle",
     "description": "its 2x2, not very difficult",
-    "author": "ruurd bijlsma",
+    "author": "RuteNL",
     "createdAt": "2020-10-14T23:05:21.714Z",
     "level": 7,
     "domains": {
@@ -25,7 +25,7 @@
         {"type": "sumsTo", "name":"Cage", "value": 10, "cells": ["1,1", "1,0"]},
         {"type": "custom", "name": "Higher than", "value": 3, "cells": ["1,0"], "constraint": "v => c => c > v"}
     ],
-    "backgroundLayers":[
+    "backgroundLayers": [
         "sudoku",
         "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
     ]
