@@ -1,6 +1,6 @@
 {
   "name": "puzzle-solver",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Set of functions for solving puzzles, mainly focuses on sudoku's but other types of puzzles should work too. Can also check if a puzzle meets all constraints and check if a puzzle has a unique solution.",
   "main": "src/index.js",
   "type": "module",
