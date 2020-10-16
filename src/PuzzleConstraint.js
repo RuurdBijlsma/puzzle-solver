@@ -1,5 +1,5 @@
 export default class PuzzleConstraint {
-    constructor(type = '', name = '', cells = [], value = null, constraint = null) {
+    constructor(name = '', type = '', cells = [], value = null, constraint = null) {
         this.name = name;
         this.type = type;
         this.cells = cells;

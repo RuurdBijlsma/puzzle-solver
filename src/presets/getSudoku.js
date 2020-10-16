@@ -38,22 +38,22 @@ export default function getSudoku(
 
     for (let x = 0; x < width; x++)
         constraints.push(new PuzzleConstraint(
-            'allDifferent',
             `Column ${x + 1}`,
+            'allDifferent',
             [...getColumn(x)],
         ));
     for (let y = 0; y < height; y++)
         constraints.push(new PuzzleConstraint(
-            'allDifferent',
             `Row ${y + 1}`,
+            'allDifferent',
             [...getRow(y)],
         ));
     if (blocks) {
         let blockCount = (width / blockSize) * (height / blockSize);
         for (let i = 0; i < blockCount; i++)
             constraints.push(new PuzzleConstraint(
-                'allDifferent',
                 `Block ${i + 1}`,
+                'allDifferent',
                 [...getBlock(i)],
             ));
     }
