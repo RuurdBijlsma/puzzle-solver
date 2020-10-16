@@ -1,5 +1,7 @@
 import * as cs from "csp-solver";
 import constraintTypes from "./constraintTypes";
+import PuzzleConstraint from "./PuzzleConstraint";
+import Puzzle from "./Puzzle";
 
 const getConstraints = (puzzle) => {
     let constraints = [];
@@ -38,4 +40,4 @@ const hasUniqueSolution = (puzzle) => {
     return {unique, result};
 }
 
-export {getCSP, solve, hasUniqueSolution, getConstraints};
+export {getCSP, solve, hasUniqueSolution, getConstraints, PuzzleConstraint, Puzzle};
