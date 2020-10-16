@@ -1,17 +1,14 @@
 import fs from 'fs';
 import Puzzle from "./Puzzle";
-import {solve} from './';
-import PuzzleConstraint from "./PuzzleConstraint";
 import presets from "./presets";
 
 function solveTest() {
 
     let f = fs.readFileSync('./example.puzzle.json');
-    let puzzle = JSON.parse(f);
+    let puzzle = Puzzle.fromJSON(f);
 
-    let s = solve(puzzle);
+    let s = puzzle.solve()
     console.log(s);
 }
-
-
-console.log(presets.getSudoku());
+solveTest();
+// console.log(presets.getSudoku());

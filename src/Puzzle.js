@@ -17,11 +17,11 @@ export default class Puzzle {
         this.backgroundLayers = [];
     }
 
-    getConstraints(puzzle) {
+    getConstraints() {
         let constraints = [];
-        for (let c of puzzle.constraints) {
+        for (let c of this.constraints) {
             if (constraintTypes.hasOwnProperty(c.type)) {
-                constraints.push(...constraintTypes[c.type](puzzle.domain, c));
+                constraints.push(...constraintTypes[c.type](this.domains, c));
             } else {
                 console.warn("Constraint", c, "was ignored, it's not supported");
             }
@@ -29,10 +29,10 @@ export default class Puzzle {
         return constraints;
     }
 
-    getCSP(puzzle, solutions = 1) {
-        let constraints = this.getConstraints(puzzle);
+    getCSP( solutions = 1) {
+        let constraints = this.getConstraints();
         return {
-            variables: puzzle.domains,
+            variables: this.domains,
             constraints,
             mrv: true,
             degree: false,
@@ -41,13 +41,13 @@ export default class Puzzle {
         };
     }
 
-    solve(puzzle) {
-        let csp = this.getCSP(puzzle, 1);
+    solve() {
+        let csp = this.getCSP( 1);
         return cs.solve(csp);
     }
 
-    hasUniqueSolution(puzzle) {
-        let csp = this.getCSP(puzzle, 'all');
+    hasUniqueSolution() {
+        let csp = this.getCSP( 'all');
         let result = cs.solve(csp);
         let unique = result.solutions.length === 1;
         return {unique, result};
@@ -58,7 +58,7 @@ export default class Puzzle {
     }
 
     static fromJSON(obj) {
-        if (typeof obj === 'string')
+        if (typeof obj === 'string' || obj instanceof Buffer)
             obj = JSON.parse(obj);
         let puzzle = new Puzzle();
         for (let key in obj)
