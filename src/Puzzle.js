@@ -29,7 +29,7 @@ export default class Puzzle {
         return constraints;
     }
 
-    getCSP( solutions = 1) {
+    getCSP(solutions = 1) {
         let constraints = this.getConstraints();
         return {
             variables: this.domains,
@@ -41,13 +41,13 @@ export default class Puzzle {
         };
     }
 
-    solve() {
-        let csp = this.getCSP( 1);
+    solve(solutions = 1) {
+        let csp = this.getCSP(solutions);
         return cs.solve(csp);
     }
 
     hasUniqueSolution() {
-        let csp = this.getCSP( 'all');
+        let csp = this.getCSP('all');
         let result = cs.solve(csp);
         let unique = result.solutions.length === 1;
         return {unique, result};
