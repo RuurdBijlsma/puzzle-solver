@@ -11,4 +11,4 @@ function solveTest() {
     console.log(s);
 }
 // solveTest();
-console.log(Puzzle.presets);
+console.log(Puzzle.constraintTypes);

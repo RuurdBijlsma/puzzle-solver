@@ -57,6 +57,10 @@ export default class Puzzle {
         return presets;
     }
 
+    static get constraintTypes(){
+        return constraintTypes;
+    }
+
     static fromJSON(obj) {
         if (typeof obj === 'string' || obj instanceof Buffer)
             obj = JSON.parse(obj);
