@@ -4,7 +4,6 @@ import presets from "./presets";
 
 export default class Puzzle {
     constructor() {
-        this.domains = [];
         this.name = '';
         this.description = '';
         this.author = '';
@@ -14,7 +13,12 @@ export default class Puzzle {
         this.pencilMarks = {};
         this.colors = {};
         this.constraints = [];
+        this.hiddenCells = [];
         this.backgroundLayers = [];
+    }
+
+    get visibleCells() {
+        return Object.keys(this.domains).filter(c => !this.hiddenCells.includes(c));
     }
 
     getConstraints() {
@@ -32,7 +36,7 @@ export default class Puzzle {
     getCSP(solutions = 1) {
         let constraints = this.getConstraints();
         return {
-            variables: this.domains,
+            variables: {...this.domains},
             constraints,
             mrv: true,
             degree: false,
@@ -57,7 +61,7 @@ export default class Puzzle {
         return presets;
     }
 
-    static get constraintTypes(){
+    static get constraintTypes() {
         return constraintTypes;
     }
 

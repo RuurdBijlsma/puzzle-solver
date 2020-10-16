@@ -63,7 +63,7 @@ export default function getSudoku(
         for (let y = 0; y < height; y++)
             domains[[x, y]] = [...defaultDomain];
 
-    let backgroundLayers = ['sudoku'];
+    let backgroundLayers = ['grid', 'sudokuBoxes'];
 
     let puzzle = new Puzzle();
     puzzle.domains = domains;

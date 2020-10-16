@@ -1,6 +1,5 @@
 import fs from 'fs';
 import Puzzle from "./Puzzle";
-import presets from "./presets";
 
 function solveTest() {
 
@@ -9,6 +8,10 @@ function solveTest() {
 
     let s = puzzle.solve()
     console.log(s);
+
+    puzzle.hiddenCells = ['1,0']
+    console.log(puzzle.visibleCells);
 }
-// solveTest();
-console.log(Puzzle.constraintTypes);
+
+solveTest();
+// console.log(Puzzle.constraintTypes);
