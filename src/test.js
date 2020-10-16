@@ -10,5 +10,5 @@ function solveTest() {
     let s = puzzle.solve()
     console.log(s);
 }
-solveTest();
-// console.log(presets.getSudoku());
+// solveTest();
+console.log(Puzzle.presets);

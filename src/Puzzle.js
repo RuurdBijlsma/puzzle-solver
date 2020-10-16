@@ -53,7 +53,7 @@ export default class Puzzle {
         return {unique, result};
     }
 
-    static presets() {
+    static get presets() {
         return presets;
     }
 
