@@ -22,7 +22,6 @@ export default function getSudoku(
             x: (i * blockSize) % width,
             y: Math.floor(i * blockSize / width) * blockSize,
         };
-        console.log(`block ${i}`, offset);
         for (let x = 0; x < blockSize; x++)
             for (let y = 0; y < blockSize; y++)
                 yield [x + offset.x, y + offset.y];
