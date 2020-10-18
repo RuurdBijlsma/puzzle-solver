@@ -13,5 +13,6 @@ function solveTest() {
     console.log(puzzle.visibleCells);
 }
 
-solveTest();
+// solveTest();
+Puzzle.presets.getSudoku(9, 9);
 // console.log(Puzzle.constraintTypes);
