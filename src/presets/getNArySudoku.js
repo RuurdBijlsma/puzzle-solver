@@ -1,7 +1,7 @@
 import PuzzleConstraint from "../PuzzleConstraint";
 import Puzzle from "../Puzzle";
 
-export default function getSudoku(
+export default function getNArySudoku(
     width = 9,
     height = 9,
     blockSize = Math.sqrt(Math.max(width, height)),
