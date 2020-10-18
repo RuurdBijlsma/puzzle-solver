@@ -15,6 +15,13 @@ export default class Puzzle {
         this.constraints = [];
         this.hiddenCells = [];
         this.backgroundLayers = [];
+
+        this.constraintsCache = null
+    }
+
+    addConstraint(constraint) {
+        this.constraintsCache = null;
+        this.constraints.push(constraint);
     }
 
     get visibleCells() {
@@ -22,6 +29,10 @@ export default class Puzzle {
     }
 
     getConstraints() {
+        if (this.constraintsCache)
+            return this.constraintsCache;
+
+        console.log('work');
         let constraints = [];
         for (let c of this.constraints) {
             if (constraintTypes.hasOwnProperty(c.type)) {
@@ -30,6 +41,7 @@ export default class Puzzle {
                 console.warn("Constraint", c, "was ignored, it's not supported");
             }
         }
+        this.constraintsCache = constraints;
         return constraints;
     }
 

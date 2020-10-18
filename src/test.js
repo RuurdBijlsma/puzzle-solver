@@ -1,5 +1,6 @@
 import fs from 'fs';
 import Puzzle from "./Puzzle";
+import {PuzzleConstraint} from "./index";
 
 function solveTest() {
 
@@ -14,5 +15,8 @@ function solveTest() {
 }
 
 // solveTest();
-Puzzle.presets.getSudoku(9, 9);
+let s = Puzzle.presets.getSudoku(9, 9);
+s.addConstraint(new PuzzleConstraint('Knights move', 'knightsMove'));
+console.log(s.getConstraints()[0]);
+console.log(s.getConstraints()[0]);
 // console.log(Puzzle.constraintTypes);
