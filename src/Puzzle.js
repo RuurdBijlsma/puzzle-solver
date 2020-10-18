@@ -16,11 +16,13 @@ export default class Puzzle {
         this.hiddenCells = [];
         this.backgroundLayers = [];
 
-        this.constraintsCache = null
+        this._allConstraintsCache = null
+        this._usableConstraintsCache = null
     }
 
     addConstraint(constraint) {
-        this.constraintsCache = null;
+        this._allConstraintsCache = null;
+        this._usableConstraintsCache = null;
         this.constraints.push(constraint);
     }
 
@@ -28,28 +30,44 @@ export default class Puzzle {
         return Object.keys(this.domains).filter(c => !this.hiddenCells.includes(c));
     }
 
-    getConstraints() {
-        if (this.constraintsCache)
-            return this.constraintsCache;
+    get usableConstraints() {
+        if (!this._usableConstraintsCache) {
+            let goodConstraints = [];
+            let otherConstraints = [];
+            this.constraints.forEach(constraint => {
+                if (constraint.variables.length > 0)
+                    goodConstraints.push(constraint)
+                else
+                    otherConstraints.push(constraint);
+            });
+            this._usableConstraintsCache = [...goodConstraints, ...this._processConstraints(otherConstraints)];
+        }
+        return this._usableConstraintsCache;
+    }
 
-        console.log('work');
-        let constraints = [];
-        for (let c of this.constraints) {
+    get allConstraints() {
+        if (!this._allConstraintsCache) {
+            this._allConstraintsCache = this._processConstraints(this.constraints);
+        }
+        return this._allConstraintsCache;
+    }
+
+    _processConstraints(constraints) {
+        let processed = [];
+        for (let c of constraints) {
             if (constraintTypes.hasOwnProperty(c.type)) {
-                constraints.push(...constraintTypes[c.type](this.domains, c));
+                processed.push(...constraintTypes[c.type](this.domains, c));
             } else {
                 console.warn("Constraint", c, "was ignored, it's not supported");
             }
         }
-        this.constraintsCache = constraints;
-        return constraints;
+        return processed;
     }
 
     getCSP(solutions = 1) {
-        let constraints = this.getConstraints();
         return {
             variables: {...this.domains},
-            constraints,
+            constraints: this.allConstraints,
             mrv: true,
             degree: false,
             lcv: false,

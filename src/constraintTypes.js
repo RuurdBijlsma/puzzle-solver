@@ -4,6 +4,30 @@ export default {
     allDifferent(allCells, {cells}) {
         return Constraint.allDifferent(cells);
     },
+    allDifferentNAry(allCells, {cells}) {
+        switch (cells.length) {
+            case 2:
+                return new Constraint(cells, (a, b) => a !== b);
+            case 3:
+                return new Constraint(cells, (a, b, c) => a !== b && b !== c);
+            case 4:
+                return new Constraint(cells, (a, b, c, d) => a !== b && b !== c && c !== d);
+            case 9:
+                return new Constraint(cells,
+                    (a, b, c, d, e, f, g, h, i) =>
+                        a !== b && b !== c && c !== d && d !== e && e !== f && f !== g && g !== h && h !== i
+                );
+            default:
+                return new Constraint(cells,
+                    (...args) => {
+                        for (let i = 1; i < args.length; i++)
+                            if (args[i - 1] !== args[i])
+                                return false;
+                        return true;
+                    }
+                );
+        }
+    },
 
     allEqual(allCells, {cells}) {
         return Constraint.allEqual(cells);

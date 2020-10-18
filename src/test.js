@@ -9,14 +9,9 @@ function solveTest() {
 
     let s = puzzle.solve()
     console.log(s);
-
-    puzzle.hiddenCells = ['1,0']
-    console.log(puzzle.visibleCells);
 }
 
 // solveTest();
 let s = Puzzle.presets.getSudoku(9, 9);
 s.addConstraint(new PuzzleConstraint('Knights move', 'knightsMove'));
-console.log(s.getConstraints()[0]);
-console.log(s.getConstraints()[0]);
-// console.log(Puzzle.constraintTypes);
+console.log(s.usableConstraints);
