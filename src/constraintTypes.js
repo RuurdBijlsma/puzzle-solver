@@ -1,24 +1,24 @@
 import {Constraint} from "csp-solver";
 
 export default {
-    allDifferent(allCells, {cells}) {
-        return Constraint.allDifferent(cells);
+    allDifferent(allVariables, {variables}) {
+        return Constraint.allDifferent(variables);
     },
-    allDifferentNAry(allCells, {cells}) {
-        switch (cells.length) {
+    allDifferentNAry(allVariables, {variables: variables}) {
+        switch (variables.length) {
             case 2:
-                return new Constraint(cells, (a, b) => a !== b);
+                return new Constraint(variables, (a, b) => a !== b);
             case 3:
-                return new Constraint(cells, (a, b, c) => a !== b && b !== c);
+                return new Constraint(variables, (a, b, c) => a !== b && b !== c);
             case 4:
-                return new Constraint(cells, (a, b, c, d) => a !== b && b !== c && c !== d);
+                return new Constraint(variables, (a, b, c, d) => a !== b && b !== c && c !== d);
             case 9:
-                return new Constraint(cells,
+                return new Constraint(variables,
                     (a, b, c, d, e, f, g, h, i) =>
                         a !== b && b !== c && c !== d && d !== e && e !== f && f !== g && g !== h && h !== i
                 );
             default:
-                return new Constraint(cells,
+                return new Constraint(variables,
                     (...args) => {
                         for (let i = 1; i < args.length; i++)
                             if (args[i - 1] !== args[i])
@@ -29,95 +29,95 @@ export default {
         }
     },
 
-    allEqual(allCells, {cells}) {
-        return Constraint.allEqual(cells);
+    allEqual(allVariables, {variables}) {
+        return Constraint.allEqual(variables);
     },
 
-    increasing(allCells, {cells}) {
-        return Constraint.increasing(cells);
+    increasing(allVariables, {variables}) {
+        return Constraint.increasing(variables);
     },
 
-    decreasing(allCells, {cells}) {
-        return Constraint.decreasing(cells);
+    decreasing(allVariables, {variables}) {
+        return Constraint.decreasing(variables);
     },
 
-    sumsTo(allCells, {cells, value}) {
-        switch (cells.length) {
+    sumsTo(allVariables, {variables, value}) {
+        switch (variables.length) {
             case 1:
-                return [new Constraint(cells, (a) => a === value)];
+                return [new Constraint(variables, (a) => a === value)];
             case 2:
-                return [new Constraint(cells, (a, b) => a + b === value)];
+                return [new Constraint(variables, (a, b) => a + b === value)];
             case 3:
-                return [new Constraint(cells, (a, b, c) => a + b + c === value)];
+                return [new Constraint(variables, (a, b, c) => a + b + c === value)];
             case 4:
-                return [new Constraint(cells, (a, b, c, d) => a + b + c + d === value)];
+                return [new Constraint(variables, (a, b, c, d) => a + b + c + d === value)];
             case 5:
-                return [new Constraint(cells, (a, b, c, d, e) => a + b + c + d + e === value)];
+                return [new Constraint(variables, (a, b, c, d, e) => a + b + c + d + e === value)];
             case 6:
-                return [new Constraint(cells, (a, b, c, d, e, f) => a + b + c + d + e + f === value)];
+                return [new Constraint(variables, (a, b, c, d, e, f) => a + b + c + d + e + f === value)];
             default:
-                return [new Constraint(cells, (...values) => values.reduce((a, b) => a + b === value))];
+                return [new Constraint(variables, (...values) => values.reduce((a, b) => a + b === value))];
         }
     },
 
-    subtractTo(allCells, {cells, value}) {
-        switch (cells.length) {
+    subtractTo(allVariables, {variables, value}) {
+        switch (variables.length) {
             case 1:
-                return [new Constraint(cells, (a) => a === value)];
+                return [new Constraint(variables, (a) => a === value)];
             case 2:
-                return [new Constraint(cells, (a, b) => a - b === value)];
+                return [new Constraint(variables, (a, b) => a - b === value)];
             case 3:
-                return [new Constraint(cells, (a, b, c) => a - b - c === value)];
+                return [new Constraint(variables, (a, b, c) => a - b - c === value)];
             case 4:
-                return [new Constraint(cells, (a, b, c, d) => a - b - c - d === value)];
+                return [new Constraint(variables, (a, b, c, d) => a - b - c - d === value)];
             case 5:
-                return [new Constraint(cells, (a, b, c, d, e) => a - b - c - d - e === value)];
+                return [new Constraint(variables, (a, b, c, d, e) => a - b - c - d - e === value)];
             case 6:
-                return [new Constraint(cells, (a, b, c, d, e, f) => a - b - c - d - e - f === value)];
+                return [new Constraint(variables, (a, b, c, d, e, f) => a - b - c - d - e - f === value)];
             default:
-                return [new Constraint(cells, (...values) => values.reduce((a, b) => a - b === value))];
+                return [new Constraint(variables, (...values) => values.reduce((a, b) => a - b === value))];
         }
     },
 
-    multiplyTo(allCells, {cells, value}) {
-        switch (cells.length) {
+    multiplyTo(allVariables, {variables, value}) {
+        switch (variables.length) {
             case 1:
-                return [new Constraint(cells, (a) => a === value)];
+                return [new Constraint(variables, (a) => a === value)];
             case 2:
-                return [new Constraint(cells, (a, b) => a * b === value)];
+                return [new Constraint(variables, (a, b) => a * b === value)];
             case 3:
-                return [new Constraint(cells, (a, b, c) => a * b * c === value)];
+                return [new Constraint(variables, (a, b, c) => a * b * c === value)];
             case 4:
-                return [new Constraint(cells, (a, b, c, d) => a * b * c * d === value)];
+                return [new Constraint(variables, (a, b, c, d) => a * b * c * d === value)];
             case 5:
-                return [new Constraint(cells, (a, b, c, d, e) => a * b * c * d * e === value)];
+                return [new Constraint(variables, (a, b, c, d, e) => a * b * c * d * e === value)];
             case 6:
-                return [new Constraint(cells, (a, b, c, d, e, f) => a * b * c * d * e * f === value)];
+                return [new Constraint(variables, (a, b, c, d, e, f) => a * b * c * d * e * f === value)];
             default:
-                return [new Constraint(cells, (...values) => values.reduce((a, b) => a * b === value))];
+                return [new Constraint(variables, (...values) => values.reduce((a, b) => a * b === value))];
         }
     },
 
-    dividesTo(allCells, {cells, value}) {
-        switch (cells.length) {
+    dividesTo(allVariables, {variables, value}) {
+        switch (variables.length) {
             case 1:
-                return [new Constraint(cells, (a) => a === value)];
+                return [new Constraint(variables, (a) => a === value)];
             case 2:
-                return [new Constraint(cells, (a, b) => a / b === value)];
+                return [new Constraint(variables, (a, b) => a / b === value)];
             case 3:
-                return [new Constraint(cells, (a, b, c) => a / b / c === value)];
+                return [new Constraint(variables, (a, b, c) => a / b / c === value)];
             case 4:
-                return [new Constraint(cells, (a, b, c, d) => a / b / c / d === value)];
+                return [new Constraint(variables, (a, b, c, d) => a / b / c / d === value)];
             case 5:
-                return [new Constraint(cells, (a, b, c, d, e) => a / b / c / d / e === value)];
+                return [new Constraint(variables, (a, b, c, d, e) => a / b / c / d / e === value)];
             case 6:
-                return [new Constraint(cells, (a, b, c, d, e, f) => a / b / c / d / e / f === value)];
+                return [new Constraint(variables, (a, b, c, d, e, f) => a / b / c / d / e / f === value)];
             default:
-                return [new Constraint(cells, (...values) => values.reduce((a, b) => a / b === value))];
+                return [new Constraint(variables, (...values) => values.reduce((a, b) => a / b === value))];
         }
     },
 
-    knightsMove(allCells, {}) {
+    knightsMove(allVariables, {}) {
         const getKnightNeighbours = key => {
             let [x, y] = key.split(',').map(n => +n);
             return [
@@ -131,10 +131,10 @@ export default {
                 [x - 2, y + 1],
             ];
         }
-        return Constraint.global(allCells, getKnightNeighbours);
+        return Constraint.global(allVariables, getKnightNeighbours);
     },
 
-    kingsMove(allCells, {}) {
+    kingsMove(allVariables, {}) {
         const getKingsNeighbours = key => {
             let [x, y] = key.split(',').map(n => +n);
             return [
@@ -148,12 +148,12 @@ export default {
                 [x - 1, y],//left
             ];
         }
-        return Constraint.global(allCells, getKingsNeighbours);
+        return Constraint.global(allVariables, getKingsNeighbours);
     },
 
-    custom(allCells, {cells, value, constraint}) {
+    custom(allVariables, {variables, value, constraint}) {
         // 👻 🍝
         let isSatisfied = eval(constraint)(value);
-        return [new Constraint(cells, isSatisfied)];
+        return [new Constraint(variables, isSatisfied)];
     },
 }
