@@ -13,7 +13,7 @@ function solveTest() {
 
 
 
-solveTest();
+// solveTest();
 let s = Puzzle.presets.getSudoku(9, 9);
 s.addConstraint(new PuzzleConstraint({
     name: 'Knights move',

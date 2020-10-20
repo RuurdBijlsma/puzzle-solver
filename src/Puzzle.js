@@ -29,12 +29,14 @@ export default class Puzzle {
     get constraintGroups() {
         let groups = {};
         for (let constraint of this.constraints) {
-            let group = constraint.group === null ? 'no-group' : constraint.group;
-            if (!groups[group])
-                groups[group] = [];
-            groups[group].push(constraint);
+            if (!groups[constraint.group])
+                groups[constraint.group] = [];
+            groups[constraint.group].push(constraint);
         }
-        return Object.entries(groups).map(([group, constraints]) => ({group, constraints}))
+        return Object.entries(groups).map(([group, constraints]) => ({
+            group: group === 'null' ? null : group,
+            constraints
+        }))
     }
 
     get visibleCells() {
