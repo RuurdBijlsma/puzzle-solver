@@ -17,13 +17,13 @@
         "0,0": "red"
     },
     "constraints": [
-        {"type": "allDifferent", "name":"Row", "cells": ["0,0", "1,0"]},
-        {"type": "allDifferent", "name":"Row", "cells": ["0,1", "1,1"]},
-        {"type": "allDifferent", "name":"Column", "cells": ["0,0", "0,1"]},
-        {"type": "allDifferent", "name":"Column", "cells": ["1,0", "1,1"]},
-        {"type": "increasing", "name":"Thermometer", "cells": ["0,0", "1,0", "1,1"]},
-        {"type": "sumsTo", "name":"Cage", "value": 10, "cells": ["1,1", "1,0"]},
-        {"type": "custom", "name": "Higher than", "value": 3, "cells": ["1,0"], "constraint": "v => c => c > v"}
+        {"type": "allDifferent", "name":"Row", "variables": ["0,0", "1,0"]},
+        {"type": "allDifferent", "name":"Row", "variables": ["0,1", "1,1"]},
+        {"type": "allDifferent", "name":"Column", "variables": ["0,0", "0,1"]},
+        {"type": "allDifferent", "name":"Column", "variables": ["1,0", "1,1"]},
+        {"type": "increasing", "name":"Thermometer", "variables": ["0,0", "1,0", "1,1"]},
+        {"type": "sumsTo", "name":"Cage", "value": 10, "variables": ["1,1", "1,0"]},
+        {"type": "custom", "name": "Higher than", "value": 3, "variables": ["1,0"], "constraint": "v => c => c > v"}
     ],
     "backgroundLayers": [
         "sudoku",

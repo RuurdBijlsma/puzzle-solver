@@ -11,7 +11,12 @@ function solveTest() {
     console.log(s);
 }
 
-// solveTest();
+
+
+solveTest();
 let s = Puzzle.presets.getSudoku(9, 9);
-s.addConstraint(new PuzzleConstraint('Knights move', 'knightsMove'));
-console.log(s.allConstraints);
+s.addConstraint(new PuzzleConstraint({
+    name: 'Knights move',
+    type: 'knightsMove'
+}));
+console.log(s.constraintGroups);

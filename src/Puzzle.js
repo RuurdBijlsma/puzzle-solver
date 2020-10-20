@@ -26,6 +26,17 @@ export default class Puzzle {
         this.constraints.push(constraint);
     }
 
+    get constraintGroups() {
+        let groups = {};
+        for (let constraint of this.constraints) {
+            let group = constraint.group === null ? 'no-group' : constraint.group;
+            if (!groups[group])
+                groups[group] = [];
+            groups[group].push(constraint);
+        }
+        return Object.entries(groups).map(([group, constraints]) => ({group, constraints}))
+    }
+
     get visibleCells() {
         return Object.keys(this.domains).filter(c => !this.hiddenCells.includes(c));
     }

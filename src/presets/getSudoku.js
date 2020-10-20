@@ -37,25 +37,28 @@ export default function getSudoku(
         blocks = false;
 
     for (let x = 0; x < width; x++)
-        constraints.push(new PuzzleConstraint(
-            `Column ${x + 1}`,
-            'allDifferent',
-            [...getColumn(x)],
-        ));
+        constraints.push(new PuzzleConstraint({
+            name: `Column ${x + 1}`,
+            type: 'allDifferent',
+            variables: [...getColumn(x)],
+            group: 'Sudoku',
+        }));
     for (let y = 0; y < height; y++)
-        constraints.push(new PuzzleConstraint(
-            `Row ${y + 1}`,
-            'allDifferent',
-            [...getRow(y)],
-        ));
+        constraints.push(new PuzzleConstraint({
+            name: `Row ${y + 1}`,
+            type: 'allDifferent',
+            variables: [...getRow(y)],
+            group: 'Sudoku',
+        }));
     if (blocks) {
         let blockCount = (width / blockSize) * (height / blockSize);
         for (let i = 0; i < blockCount; i++)
-            constraints.push(new PuzzleConstraint(
-                `Block ${i + 1}`,
-                'allDifferent',
-                [...getBlock(i)],
-            ));
+            constraints.push(new PuzzleConstraint({
+                name: `Block ${i + 1}`,
+                type: 'allDifferent',
+                variables: [...getBlock(i)],
+                group: 'Sudoku',
+            }));
     }
 
     let domains = {};
