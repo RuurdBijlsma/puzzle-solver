@@ -30,7 +30,14 @@ export default class Puzzle {
         let groups = {};
 
         for (let constraint of this.constraints) {
-            let groupStructure = constraint.group === null ? [null] : constraint.group.split('/');
+            if (constraint.group === null) {
+                if (!groups.constraints)
+                    groups.constraints = [];
+                groups.constraints.push(constraint);
+                continue;
+            }
+
+            let groupStructure = constraint.group.split('/');
 
             let currentGroup = groups;
             for (let i = 0; i < groupStructure.length; i++) {
