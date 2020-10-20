@@ -46,7 +46,6 @@ export default class Puzzle {
 
                 currentGroup = currentGroup[key];
             }
-            console.log(JSON.stringify(groups));
         }
 
         return groups;
