@@ -41,14 +41,14 @@ export default function getSudoku(
             name: `Column ${x + 1}`,
             type: 'allDifferent',
             variables: [...getColumn(x)],
-            group: 'Sudoku',
+            group: 'Sudoku/Columns',
         }));
     for (let y = 0; y < height; y++)
         constraints.push(new PuzzleConstraint({
             name: `Row ${y + 1}`,
             type: 'allDifferent',
             variables: [...getRow(y)],
-            group: 'Sudoku',
+            group: 'Sudoku/Rows',
         }));
     if (blocks) {
         let blockCount = (width / blockSize) * (height / blockSize);
@@ -57,7 +57,7 @@ export default function getSudoku(
                 name: `Block ${i + 1}`,
                 type: 'allDifferent',
                 variables: [...getBlock(i)],
-                group: 'Sudoku',
+                group: 'Sudoku/Blocks',
             }));
     }
 

@@ -28,15 +28,28 @@ export default class Puzzle {
 
     get constraintGroups() {
         let groups = {};
+
         for (let constraint of this.constraints) {
-            if (!groups[constraint.group])
-                groups[constraint.group] = [];
-            groups[constraint.group].push(constraint);
+            let groupStructure = constraint.group === null ? [null] : constraint.group.split('/');
+
+            let currentGroup = groups;
+            for (let i = 0; i < groupStructure.length; i++) {
+                let key = groupStructure[i];
+                let isFinalKey = i === groupStructure.length - 1;
+
+                if (currentGroup[key] === undefined)
+                    currentGroup[key] = {};
+                if (isFinalKey && currentGroup[key].constraints === undefined)
+                    currentGroup[key].constraints = [];
+                if (isFinalKey)
+                    currentGroup[key].constraints.push(constraint)
+
+                currentGroup = currentGroup[key];
+            }
+            console.log(JSON.stringify(groups));
         }
-        return Object.entries(groups).map(([group, constraints]) => ({
-            group: group === 'null' ? null : group,
-            constraints
-        }))
+
+        return groups;
     }
 
     get visibleCells() {
