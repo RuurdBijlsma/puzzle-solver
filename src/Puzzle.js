@@ -26,6 +26,16 @@ export default class Puzzle {
         this.constraints.push(constraint);
     }
 
+    removeConstraint(constraint) {
+        let index = this.constraints.indexOf(constraint);
+        if (index === -1)
+            return false;
+        this._allConstraintsCache = null;
+        this._usableConstraintsCache = null;
+        this.constraints.splice(index, 1);
+        return true;
+    }
+
     get constraintGroups() {
         let groups = {};
 
