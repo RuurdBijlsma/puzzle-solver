@@ -2,13 +2,11 @@ import {Constraint} from "csp-solver";
 
 export default {
     allDifferent: {
-        global: false,
         constraint(allVariables, {variables}) {
             return Constraint.allDifferent(variables);
         }
     },
     allDifferentNAry: {
-        global: false,
         constraint(allVariables, {variables: variables}) {
             switch (variables.length) {
                 case 2:
@@ -36,28 +34,25 @@ export default {
     },
 
     allEqual: {
-        global: false,
         constraint(allVariables, {variables}) {
             return Constraint.allEqual(variables);
         }
     },
 
     increasing: {
-        global: false,
         constraint(allVariables, {variables}) {
             return Constraint.increasing(variables);
         }
     },
 
     decreasing: {
-        global: false,
         constraint(allVariables, {variables}) {
             return Constraint.decreasing(variables);
         }
     },
 
     sumsTo: {
-        global: false,
+        value: true,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -79,7 +74,7 @@ export default {
     },
 
     subtractTo: {
-        global: false,
+        value: true,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -101,7 +96,7 @@ export default {
     },
 
     multiplyTo: {
-        global: false,
+        value: true,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -123,7 +118,7 @@ export default {
     },
 
     dividesTo: {
-        global: false,
+        value: true,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -185,7 +180,8 @@ export default {
     },
 
     custom: {
-        global: false,
+        value: true,
+        constraintFunction: true,
         constraint(allVariables, {variables, value, constraint}) {
             // 👻 🍝
             let isSatisfied = eval(constraint)(value);

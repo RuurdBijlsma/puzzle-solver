@@ -5,7 +5,7 @@ export default class PuzzleConstraint {
                     variables = [],
                     value = null,
                     constraint = null,
-                    group = null
+                    group = null,
                 }) {
         this.name = name;
         this.type = type;
