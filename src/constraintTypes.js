@@ -52,7 +52,7 @@ export default {
     },
 
     sumsTo: {
-        value: Number,
+        value: 'number',
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -74,7 +74,7 @@ export default {
     },
 
     subtractTo: {
-        value: Number,
+        value: 'number',
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -96,7 +96,7 @@ export default {
     },
 
     multiplyTo: {
-        value: Number,
+        value: 'number',
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -118,7 +118,7 @@ export default {
     },
 
     dividesTo: {
-        value: Number,
+        value: 'number',
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -180,7 +180,7 @@ export default {
     },
 
     custom: {
-        value: true,
+        value: 'text',
         constraintFunction: true,
         constraint(allVariables, {variables, value, constraint}) {
             // 👻 🍝
