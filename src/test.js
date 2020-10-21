@@ -19,4 +19,3 @@ s.addConstraint(new PuzzleConstraint({
     name: 'Knights move',
     type: 'knightsMove'
 }));
-console.log(s.constraintGroups);

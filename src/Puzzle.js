@@ -122,6 +122,11 @@ export default class Puzzle {
         return cs.solve(csp);
     }
 
+    copy() {
+        let json = JSON.stringify({...this, _usableConstraintsCache: null, _allConstraintsCache: null});
+        return Puzzle.fromJSON(json);
+    }
+
     static get presets() {
         return presets;
     }
