@@ -88,7 +88,7 @@ export default class Puzzle {
         let processed = [];
         for (let c of constraints) {
             if (constraintTypes.hasOwnProperty(c.type)) {
-                processed.push(...constraintTypes[c.type](this.domains, c));
+                processed.push(...constraintTypes[c.type].constraint(this.domains, c));
             } else {
                 console.warn("Constraint", c, "was ignored, it's not supported");
             }
