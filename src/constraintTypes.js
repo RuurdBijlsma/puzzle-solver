@@ -52,7 +52,7 @@ export default {
     },
 
     sumsTo: {
-        value: true,
+        value: Number,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -74,7 +74,7 @@ export default {
     },
 
     subtractTo: {
-        value: true,
+        value: Number,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -96,7 +96,7 @@ export default {
     },
 
     multiplyTo: {
-        value: true,
+        value: Number,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
@@ -118,7 +118,7 @@ export default {
     },
 
     dividesTo: {
-        value: true,
+        value: Number,
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
                 case 1:
