@@ -122,13 +122,6 @@ export default class Puzzle {
         return cs.solve(csp);
     }
 
-    hasUniqueSolution() {
-        let csp = this.getCSP('all');
-        let result = cs.solve(csp);
-        let unique = result.solutions.length === 1;
-        return {unique, result};
-    }
-
     static get presets() {
         return presets;
     }
