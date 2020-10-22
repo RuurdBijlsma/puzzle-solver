@@ -179,6 +179,35 @@ export default {
         }
     },
 
+    nonConsecutiveNeighbours: {
+        global: true,
+        constraint(allVariables, {}) {
+
+            const get4Neighbours = key => {
+                let [x, y] = key.split(',').map(n => +n);
+                return [
+                    [x, y - 1],//top
+                    [x + 1, y],//right
+                    [x, y + 1],//bottom
+                    [x - 1, y],//left
+                ];
+            }
+            return Constraint.global(allVariables, get4Neighbours, Constraint.nonConsecutive);
+        },
+    },
+
+    consecutive: {
+        constraint(allVariables, {variables}) {
+            return Constraint.consecutive(variables);
+        },
+    },
+
+    nonConsecutive: {
+        constraint(allVariables, {variables}) {
+            return Constraint.nonConsecutive(variables);
+        },
+    },
+
     custom: {
         value: 'text',
         constraintFunction: true,
