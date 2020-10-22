@@ -106,23 +106,23 @@ export default class Puzzle {
         return processed;
     }
 
-    getCSP(solutions = 1) {
+    getCSP(solutions = 1, lcv = false, degree = false, mrv = true) {
         return {
             variables: {...this.domains},
             constraints: this.allConstraints,
-            mrv: true,
-            degree: false,
-            lcv: false,
+            mrv,
+            degree,
+            lcv,
             solutions,
         };
     }
 
-    solve(solutions = 1) {
-        let csp = this.getCSP(solutions);
+    solve(solutions = 1, lcv = false, degree = false, mrv = true,) {
+        let csp = this.getCSP(solutions, lcv, degree, mrv);
         return cs.solve(csp);
     }
 
-    get consistentDomains(){
+    get consistentDomains() {
         return cs.enforceConsistency(this.getCSP())
     }
 
