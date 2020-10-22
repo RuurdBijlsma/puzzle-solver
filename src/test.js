@@ -19,4 +19,4 @@ s.addConstraint(new PuzzleConstraint({
     type: 'knightsMove'
 }));
 s.domains[[1, 1]] = [1]
-console.log(s.consistentDomain);
+console.log(s.consistentDomains);

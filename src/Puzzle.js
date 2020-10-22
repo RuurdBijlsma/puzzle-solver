@@ -122,7 +122,7 @@ export default class Puzzle {
         return cs.solve(csp);
     }
 
-    get consistentDomain(){
+    get consistentDomains(){
         return cs.enforceConsistency(this.getCSP())
     }
 
