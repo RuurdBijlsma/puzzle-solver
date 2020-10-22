@@ -40,12 +40,14 @@ export default {
     },
 
     increasing: {
+        directional: true,
         constraint(allVariables, {variables}) {
             return Constraint.increasing(variables);
         }
     },
 
     decreasing: {
+        directional: true,
         constraint(allVariables, {variables}) {
             return Constraint.decreasing(variables);
         }
@@ -74,6 +76,7 @@ export default {
     },
 
     subtractTo: {
+        directional: true,
         value: 'number',
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
@@ -118,6 +121,7 @@ export default {
     },
 
     dividesTo: {
+        directional: true,
         value: 'number',
         constraint(allVariables, {variables, value}) {
             switch (variables.length) {
@@ -197,18 +201,21 @@ export default {
     },
 
     consecutive: {
+        directional: true,
         constraint(allVariables, {variables}) {
             return Constraint.consecutive(variables);
         },
     },
 
     nonConsecutive: {
+        directional: true,
         constraint(allVariables, {variables}) {
             return Constraint.nonConsecutive(variables);
         },
     },
 
     custom: {
+        directional: true,
         value: 'text',
         constraintFunction: true,
         constraint(allVariables, {variables, value, constraint}) {
