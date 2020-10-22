@@ -12,10 +12,11 @@ function solveTest() {
 }
 
 
-
 solveTest();
 let s = Puzzle.presets.getSudoku(9, 9);
 s.addConstraint(new PuzzleConstraint({
     name: 'Knights move',
     type: 'knightsMove'
 }));
+s.domains[[1, 1]] = [1]
+console.log(s.consistentDomain);

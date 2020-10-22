@@ -122,6 +122,10 @@ export default class Puzzle {
         return cs.solve(csp);
     }
 
+    get consistentDomain(){
+        return cs.enforceConsistency(this.getCSP())
+    }
+
     copy() {
         let json = JSON.stringify({...this, _usableConstraintsCache: null, _allConstraintsCache: null});
         return Puzzle.fromJSON(json);
