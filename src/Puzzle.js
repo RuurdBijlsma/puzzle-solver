@@ -20,6 +20,11 @@ export default class Puzzle {
         this._usableConstraintsCache = null
     }
 
+    editConstraint(){
+        this._allConstraintsCache = null;
+        this._usableConstraintsCache = null;
+    }
+
     addConstraint(constraint) {
         this._allConstraintsCache = null;
         this._usableConstraintsCache = null;
